@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/create_user" method="Post">
+        {% csrf_token %}
+        <p>First Name: </p><input type="text" name="fname">
+        <p>Last Name: </p><input type="text" name="lname">
+        <p>Favorite Color: </p><input type="text" name="favcolor">
+        <p>More: </p><input type="text" name="more">
+        <button type="submit">Submit</button>
+    </form>
+    <ul>
+        {% for peeps in all_people %}
+            <li>{{ peeps.first_name }} {{ peeps.last_name }} <button onclick="window.location.href = '/delete/{{ peeps.id }}';">delete</button> <button onclick="window.location.href = '/info/{{ peeps.id }}'">Info</button></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

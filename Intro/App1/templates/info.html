@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info</title>
+</head>
+<body>
+    <h1>{{ person.first_name }} {{ person.last_name }}</h1>
+    <p>Favortie Color: {{ person.favorite_color }}</p>
+    <p>More: {{ person.more_about_you }}</p>
+    <button onclick="window.location.href = '/delete/{{ person.id }}';">delete</button>
+    <button onclick="window.location.href = '/' ">Return</button>
+</body>
+</html>
